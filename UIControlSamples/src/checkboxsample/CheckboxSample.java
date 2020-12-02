@@ -102,9 +102,11 @@ public class CheckboxSample extends Application {
         root.getChildren().add(stack);
         root.setSpacing(40);
         root.setPadding(new Insets(20, 10, 10, 20));
-
+        
+        scene.getStylesheets().add((getClass().getResource("checkboxsampleCSS.css").toExternalForm()));
+        
         ((Group) scene.getRoot()).getChildren().add(root);
-
+        
         stage.setScene(scene);
         stage.show();
     }

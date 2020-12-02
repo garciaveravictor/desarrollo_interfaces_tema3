@@ -103,7 +103,9 @@ public class TooltipSample extends Application {
         root.setPadding(new Insets(20, 10, 10, 20));
 
         ((Group) scene.getRoot()).getChildren().add(root);
-
+        
+        scene.getStylesheets().add((getClass().getResource("tooltipsampleCSS.css").toExternalForm()));
+        
         stage.setScene(scene);
         stage.show();
     }

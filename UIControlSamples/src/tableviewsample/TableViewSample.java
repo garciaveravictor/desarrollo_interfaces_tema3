@@ -152,7 +152,9 @@ public class TableViewSample extends Application {
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 0, 0, 10));
         vbox.getChildren().addAll(label, table, hb);
- 
+        
+        scene.getStylesheets().add((getClass().getResource("tableviewsampleCSS.css").toExternalForm()));
+        
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
  
         stage.setScene(scene);

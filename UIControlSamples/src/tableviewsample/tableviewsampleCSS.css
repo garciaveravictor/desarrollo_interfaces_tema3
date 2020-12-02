@@ -1,0 +1,12 @@
+/* 
+    Created on : 02-dic-2020, 11:26:13
+    Author     : Victor Garcia Vera 2DAM
+*/
+
+.table-row-cell:empty {
+    -fx-background-color: lightyellow;
+}
+ 
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
