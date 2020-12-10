@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import componentes_garciavictor.SelectorDeslizamientoController?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appusoselector.FXMLDocumentController">
+   <children>
+      <Label layoutX="239.0" layoutY="69.0" text="Selectores" textFill="RED">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <VBox layoutX="225.0" layoutY="127.0" prefHeight="78.0" prefWidth="150.0">
+         <children>
+            <SelectorDeslizamientoController fx:id="selectorDeslizamientoSuperior">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </SelectorDeslizamientoController>
+            <SelectorDeslizamientoController fx:id="selectorDeslizamientoInferior">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </SelectorDeslizamientoController>
+         </children>
+      </VBox>
+      <Label fx:id="labelSelector" layoutX="239.0" layoutY="242.0" prefHeight="17.0" prefWidth="199.0" />
+   </children>
+</AnchorPane>
