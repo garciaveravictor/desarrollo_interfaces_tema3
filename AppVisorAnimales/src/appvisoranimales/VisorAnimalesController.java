@@ -13,9 +13,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -37,6 +39,13 @@ public class VisorAnimalesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        listViewIzq.setCellFactory(new Callback<ListView<Animales>, ListCell<Animales>>() {
+            @Override
+            public ListCell<Animales> call(ListView<Animales> param) {
+                return new CeldaImagenTexto();
+            }
+        });
+ 
         animales = FXCollections.observableArrayList();
         
         Animales perro = new Animales("Perro","IMG/perro1.jpg","IMG/perro2.jpg");
