@@ -46,7 +46,7 @@ public class Animales {
 
     @Override
     public String toString() {
-        return "Animal{" + "nombre=" + nombre + ", imagenMiniatura=" + imagenMiniatura + ", imagenGrande=" + imagenGrande + '}';
+        return nombre;
     }
       
 }

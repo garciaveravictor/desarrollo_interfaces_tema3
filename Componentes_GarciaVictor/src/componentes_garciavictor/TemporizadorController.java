@@ -5,50 +5,65 @@
  */
 package componentes_garciavictor;
 
-import java.io.IOException;
-import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
  *
  * @author Victor Garcia Vera 2DAM
  */
-public class TemporizadorController extends Label{
+public class TemporizadorController extends Label {
 
     /**
      * Initializes the controller class.
      */
     private int tiempo = 10;
     @FXML
-    private AnimationTimer timer;
-    
-    public TemporizadorController(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TemporizadorView.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+    private Timeline timeline;
+    private int aux;
 
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-        
-        this.setText(Integer.toString(tiempo));
-         
-        timer.start();
-        timer = new AnimationTimer() {
+    public TemporizadorController(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public TemporizadorController() {
+        this.tiempo = 10;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public void initTemporizador() {
+        aux = tiempo;
+        timeline = new Timeline();
+        setText("Quedan: " + aux + " segundos");
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler() {
             @Override
-            public void handle(long l) {
-                this.setText(Integer.toString(tiempo));
-                tiempo++;
+            public void handle(Event event) {
+                aux--;
+                setText("Quedan: " + aux + " segundos");
+                if (aux == 0) {
+                    timeline.stop();
+                }
             }
- 
-        };
-        
-        
-    }    
-    
+        }));
+        timeline.play();
+    }
+
+    public int getAux() {
+        return aux;
+    }
+
 }
