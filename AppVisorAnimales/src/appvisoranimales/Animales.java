@@ -48,6 +48,5 @@ public class Animales {
     public String toString() {
         return "Animal{" + "nombre=" + nombre + ", imagenMiniatura=" + imagenMiniatura + ", imagenGrande=" + imagenGrande + '}';
     }
-    
-    
+      
 }

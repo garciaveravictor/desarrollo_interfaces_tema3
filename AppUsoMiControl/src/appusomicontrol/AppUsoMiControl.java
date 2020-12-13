@@ -5,8 +5,14 @@
  */
 package appusomicontrol;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import proyectomicontrol.MiControl;
@@ -22,16 +28,21 @@ public class AppUsoMiControl extends Application {
         
         MiControl miControl = new MiControl();
         
-        /*Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
+        miControl.setOnAction(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+            public void handle(MouseEvent event) {
+                try {
+                    introspeccion(miControl);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(AppUsoMiControl.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchFieldException ex) {
+                    Logger.getLogger(AppUsoMiControl.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AppUsoMiControl.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
-        */
+
         Pane root = new Pane();
         root.getChildren().add(miControl);
         
@@ -47,6 +58,33 @@ public class AppUsoMiControl extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    public static void introspeccion(MiControl miControl) throws NoSuchMethodException, NoSuchFieldException, ClassNotFoundException
+    {
+        Method[] metodos;
+        metodos = miControl.getClass().getDeclaredMethods();
+
+        //Nombre Clase
+        System.out.println("GetName: "+miControl.getClass().getName());
+
+        //Métodos
+        System.out.println("Métodos: ");
+        for(int i = 0; i < metodos.length; i++) {
+            System.out.println("Metodo "+(i+1)+ " : "+metodos[i]);
+         }
+        System.out.println("Constructores: "+miControl.getClass().getConstructor());
+
+        //Clase
+        Class clase;
+        clase=Class.forName("proyectomicontrol.MiControl");
+        System.out.println("Clase: "+clase.getName());
+
+        // Field
+        Field sField = miControl.getClass().getField("string1");
+        System.out.println("Field: " + sField.toString());
+
+
     }
     
 }

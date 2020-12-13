@@ -35,6 +35,15 @@ public class VisorAnimalesController implements Initializable {
         // TODO
         animales = FXCollections.observableArrayList();
         
+        Animales perro = new Animales("Perro","../IMG/perro1.jpg","../IMG/perro2.jpg");
+        Animales gato = new Animales("Gato","../IMG/gato1.jpg","../IMG/gato2.jpg");
+        Animales conejo = new Animales("Conejo","../IMG/conejo1.jpg","../IMG/conejo2.jpg");
+        
+        animales.add(perro);
+        animales.add(gato);
+        animales.add(conejo);
+        
+        
     }    
     
 }
